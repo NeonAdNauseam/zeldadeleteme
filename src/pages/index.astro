@@ -4,7 +4,7 @@ import '../styles/global.css';
 
 // data source
 // replace temporary JSON placeholder API
-const source = 'https://jsonplaceholder.typicode.com/users';
+const source = 'https://botw-compendium.herokuapp.com/api/v3/compendium/';
 // fetch the data
 const res = await fetch(source); 
 // store retreived data
@@ -35,18 +35,20 @@ const data = await res.json();
 		  
 				<!-- Your API Data -->
 				{
-					data.map( item =>
+					data.data.map( item =>
+					<div class="card-item">
+
+					<figure>
+					<img src={item.image}/>
 					<li class="card-item">
-						<a href="#">
-							<figure class="card">
-							<img src="https://assets.codepen.io/16425/image-placeholder.png" alt="Placeholder">
-							<figcaption class="caption">
-								<h3 class="caption-title">{item.name}</h3>
-								<p>{item.company.catchPhrase}</p>
-							</figcaption>
-							</figure>
-						</a>
+						{item.name}
 					</li> 
+
+					<figcaption>
+						{item.description}
+					</figcaption>
+					</figure>
+					</div>
 					)
 				}
 		  
